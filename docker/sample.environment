@@ -9,25 +9,25 @@
 # With this variable, the names of all containers and networks are built. It must be unique on the host machine
 #
 # @TODO: change PROJECT_NAME
-export PROJECT_NAME=test
+export PROJECT_NAME=ddd
 
 # service: apache2
 # the container name:
 export APACHE_NAME=${PROJECT_NAME}_apache2
 # the image to build the container from:
-export APACHE_IMAGE=my/ubuntu:15.10
+export APACHE_IMAGE=my/ubuntu:16.04
 # The host name to add to /etc/hosts. It must be unique on the host machine
 # @TODO: change APACHE_HOSTNAME
-export APACHE_HOSTNAME=test.local
+export APACHE_HOSTNAME=ddd.local
 
 # service: mysql
 # the container name:
-export MYSQL_NAME=${PROJECT_NAME}_mysql
+export MYSQL_NAME=${PROJECT_NAME}_mariadb
 # the image to build the container from:
-export MYSQL_IMAGE=mysql:5.7
+export MYSQL_IMAGE=mariadb:10
 # the host to add to /etc/hosts. It must be unique on the host machine
 # @TODO: change MYSQL_HOSTNAME
-export MYSQL_HOSTNAME=mysql.test.local
+export MYSQL_HOSTNAME=mariadb.ddd.local
 
 # the mysql root password:
 export MYSQL_ROOT_PASSWORD=drootpal
@@ -44,7 +44,7 @@ export MYSQL_IP=${subnet}.101
 
 # Echo the values set above to create an environment file for use by Docker:
 unset PWD SHLVL _
-env 
+env
 
 # Site install defaults
 # ----------------------
@@ -53,6 +53,6 @@ export MYSQL_DRUPAL_USER=drupal
 export MYSQL_DRUPAL_DB=drupal
 export MYSQL_DRUPAL_PASSWORD=drupal
 # site information
-export SITE_NAME=Site-install
-export ADMIN_USER=me
-export ADMIN_PASSWORD=me
+export SITE_NAME=Drupal Development
+export ADMIN_USER=admin
+export ADMIN_PASSWORD=admin
