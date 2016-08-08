@@ -6,10 +6,16 @@
 #   used in the /etc/hosts file. The subnet addresses must be unique on
 #   the host, thus they must be adjusted per project.
 
+### Variables that need to be changed ###
 # With this variable, the names of all containers and networks are built. It must be unique on the host machine
 #
 # @TODO: change PROJECT_NAME
 export PROJECT_NAME=ddd
+# Networking: unique IP-Address for apache
+# increment the 3rd octet in each project
+# @TODO: change the 3rd octet of IP-addresses
+subnet=172.16.1
+### The rest can be as is ###
 
 # service: apache2
 # the container name:
@@ -17,8 +23,8 @@ export APACHE_NAME=${PROJECT_NAME}_apache2
 # the image to build the container from:
 export APACHE_IMAGE=my/ubuntu:16.04
 # The host name to add to /etc/hosts. It must be unique on the host machine
-# @TODO: change APACHE_HOSTNAME
-export APACHE_HOSTNAME=ddd.local
+# @OPTIONAL: change APACHE_HOSTNAME
+export APACHE_HOSTNAME=${PROJECT_NAME}.local
 
 # service: mysql
 # the container name:
@@ -26,16 +32,11 @@ export MYSQL_NAME=${PROJECT_NAME}_mariadb
 # the image to build the container from:
 export MYSQL_IMAGE=mariadb:10
 # the host to add to /etc/hosts. It must be unique on the host machine
-# @TODO: change MYSQL_HOSTNAME
-export MYSQL_HOSTNAME=mariadb.ddd.local
+# @OPTIONAL: change MYSQL_HOSTNAME
+export MYSQL_HOSTNAME=mariadb.${PROJECT_NAME}.local
 
 # the mysql root password:
 export MYSQL_ROOT_PASSWORD=drootpal
-
-# Networking: unique IP-Address for apache
-# increment the 3rd octet in each project
-# @TODO: change the 3rd octet of IP-addresses
-subnet=172.16.1
 
 export NET_SUBNET=${subnet}.0/24
 export NET_GATEWAY=${subnet}.1
