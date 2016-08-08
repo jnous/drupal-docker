@@ -21,13 +21,13 @@ while true; do
     case \$yn in
         [Yy]* ) break;;
         [Nn]* ) exit;;
-        * ) echo "Please answer yes or no.";;
+        * ) echo "Please answer y or n.";;
     esac
 done
 echo "processing..."
 mysql --user="root" --password="$MYSQL_ROOT_PASSWORD" << EOF2 2> /dev/null
 DROP DATABASE IF EXISTS $MYSQL_DRUPAL_DB;
-CREATE DATABASE $MYSQL_DRUPAL_DB CHARACTER SET utf8;
+CREATE DATABASE $MYSQL_DRUPAL_DB CHARACTER SET utf8mb4 COLLATE utf8mb4_unicode_ci;
 GRANT ALL
   ON $MYSQL_DRUPAL_DB.*
   TO '$MYSQL_DRUPAL_USER'@'%'
@@ -42,5 +42,3 @@ chmod +x $TMPDIR/$INITFILE
 docker exec -i $CONTAINER "$REMOTEDIR/$INITFILE"
 
 rm $TMPDIR/$INITFILE
-
-
