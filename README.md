@@ -2,6 +2,17 @@
 
 This project creates Docker containers for Drupal development. Drupal project is created based on [Composer template for Drupal projects](https://github.com/drupal-composer/drupal-project), database is MariaDB 10, tools such as Drush, Drupal Console, Node.js ans Sass are available. Also support for PhpStorm Docker integration is included.
 
+## Quick installation
+
+1. Run `build-images.sh`.
+2. Copy `sample.environment` to `environment` with customizations as necessary.
+3. Run `docker/startup.sh`.
+4. If not running Docker for Mac, run `docker/addhost.sudo.sh`. (?)
+5. Run `docker/composer-init.sh` to get Composer template for Drupal project.
+6. Edit `drupal/composer.json` to suit your needs, for Drupal version and contrib modules. (Default Drupal version is 8.x-dev, suitable for core development.)
+7. Run `docker/composer-drupal-install.sh` to install Drupal as specified in `composer.json`, set up some directories and create your `settings.php` ready for Drupal installation process.
+8. Do Drupal installation; if default settings are acceptable (like core development), run `docker/drush-si.sh`.
+
 
 ## Original intro
 
