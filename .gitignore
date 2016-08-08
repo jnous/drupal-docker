@@ -7,3 +7,10 @@ www/
 docker/environment
 docker/.environment.env
 .idea/workspace.xml
+
+# Ignore some Drupal directories.
+drupal/vendor
+drupal/modules/contrib
+drupal/themes/contrib
+drupal/web/sites/**/files
+settings.local.php
