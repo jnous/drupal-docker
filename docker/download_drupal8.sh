@@ -1,5 +1,5 @@
 #!/usr/bin/env bash
-# initialize a drupal 8 environment using drush
+# initialize a Drupal 8 environment using drush
 umask 000
 
 # load basic functions and project environment
