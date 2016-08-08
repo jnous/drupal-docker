@@ -1,14 +1,13 @@
 #!/usr/bin/env bash
 # Script to add/remove the project's hosts to/from /etc/hosts
 # If a host's IP is empty, it's entry is removed from /etc/hosts
-# *************************************
-# * This script must be run as sudo!  *
-# *************************************
 
 . environment > /dev/null
 
 HOSTSNEW=../www/tmp/hosts
 HOSTS=/etc/hosts
+# Just to be sure, make a backup.
+sudo cp $HOSTS $HOSTS.ddd-backup
 cat $HOSTS > ${HOSTSNEW}
 rm ${HOSTSNEW}.tmp 2> /dev/null
 
@@ -32,10 +31,6 @@ if [ ! -z "$MYSQL_HOSTNAME" ]
     fi
 fi
 
-cat $HOSTSNEW > $HOSTS
-rm $HOSTSNEW
-
 echo "New $HOSTS file:"
-cat $HOSTS
-
-
+cat $HOSTSNEW | sudo tee $HOSTS
+rm $HOSTSNEW
