@@ -8,8 +8,6 @@ umask 000
 
 composer_project="$(projectdir)/drupal"
 
-if [ ! -f "${composer_project}/composer.json" ]
-then
-  echo "Initializing Composer project in ${composer_project}..."
-  composer create-project drupal-composer/drupal-project:8.x-dev "${composer_project}" --stability dev --no-interaction
-fi
+## Composer project initialization will fail if $composer_project is not empty.
+echo "Initializing Composer project in ${composer_project}..."
+composer create-project drupal-composer/drupal-project:8.x-dev "${composer_project}" --stability dev --no-interaction

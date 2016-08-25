@@ -4,14 +4,20 @@ This project creates Docker containers for Drupal development. Drupal project is
 
 ## Quick installation
 
-1. Run `build-images.sh`.
-2. Copy `sample.environment` to `environment` with customizations as necessary.
-3. Run `docker/startup.sh`.
-4. If not running Docker for Mac, run `docker/addhost.sudo.sh`. (?)
-5. Run `docker/composer-init.sh` to get Composer template for Drupal project.
-6. Edit `drupal/composer.json` to suit your needs, for Drupal version and contrib modules. (Default Drupal version is 8.x-dev, suitable for core development.)
-7. Run `docker/composer-drupal-install.sh` to install Drupal as specified in `composer.json`, set up some directories and create your `settings.php` ready for Drupal installation process.
-8. Do Drupal installation; if default settings are acceptable (like core development), run `docker/drush-si.sh`.
+On OS X, you will need the GNU coreutils package, available through Homebrew: `brew install coreutils socat` (socat is included for PhpStorm support).
+
+First time setting up this project, run `. build-images.sh` to build the Docker images. After that, the images will be available for next projects.
+
+Setup the containers:
+
+1. `cd docker`
+2. In `docker` directory copy `sample.environment` to `environment`, customize as necessary and add execute permissions: `chmod a+x environment`.
+3. Run `. composer-init.sh` to get Composer template for Drupal project, **or** copy your existing Drupal project under `drupal` with docroot in `drupal/web`.
+4. Run `. composer-drupal-install.sh` to install Drupal as specified in `composer.json`, set up some directories and create your `settings.php` ready for Drupal installation process.
+5. Run `. startup.sh`.
+6. If not running Docker for Mac, run `. addhost.sudo.sh`. (?)
+7. Edit `drupal/composer.json` to suit your needs, for Drupal version and contrib modules. (Default Drupal version is 8.x-dev, suitable for core development.)
+8. **Optional:** Do Drupal installation; if default settings are acceptable (like core development), run `. drush-si.sh`.
 
 
 ## Original intro

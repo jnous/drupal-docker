@@ -57,3 +57,6 @@ export MYSQL_DRUPAL_PASSWORD=drupal
 export SITE_NAME=Drupal Development
 export ADMIN_USER=admin
 export ADMIN_PASSWORD=admin
+
+# Source external password file (not committed in VCS) to override default passwords.
+#. passwords

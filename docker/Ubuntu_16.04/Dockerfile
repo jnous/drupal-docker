@@ -1,7 +1,7 @@
 # Php 7.0
 FROM ubuntu:16.04
 
-# install reqired software: apache2 and php
+# install required software: apache2 and php
 RUN apt-get update \
     && apt-get -y upgrade \
     && DEBIAN_FRONTEND=noninteractive apt-get -y install \

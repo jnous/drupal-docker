@@ -6,7 +6,7 @@ umask 000
 . functions
 
 echo "*************************************************************************************"
-echo This will install a site with default values
+echo This will install a site with default values.
 echo "*************************************************************************************"
 
 cd "$(projectdir)/www/docroot"

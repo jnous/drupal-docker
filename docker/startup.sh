@@ -1,6 +1,7 @@
 #!/usr/bin/env bash
 
 # create the environment file for Docker
+# NB: env executes environment instead of sourcing, so it needs exec permissions.
 env -i ./environment | sort > .environment.env
 
 echo "COMPOSE_OPTIONS ============================"

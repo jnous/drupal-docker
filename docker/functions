@@ -81,7 +81,7 @@ function drush()
 }
 
 # @function drupal
-#           calls docerized drupal console for the current project. It uses the current directory as
+#           calls dockerized drupal console for the current project. It uses the current directory as
 #           working directory.
 # @usage    drupal drupal-console commands...
 function drupal()
@@ -155,7 +155,9 @@ mkdir "${projectdir}/.log" 2> /dev/null
 mkdir "${projectdir}/.mysql" 2> /dev/null
 mkdir "${projectdir}/.sendmail" 2> /dev/null
 mkdir "${projectdir}/www" 2> /dev/null
-mkdir "${projectdir}/drupal" 2> /dev/null # Drupal Composer project directory
+## These should be created by Composer project template (or manually if importing an existing project)
+# mkdir "${projectdir}/drupal" 2> /dev/null # Drupal Composer project directory
+# mkdir "${projectdir}/drupal/web" 2> /dev/null # Drupal installation directory
 ln -s "${projectdir}/drupal/web" "${projectdir}/www/docroot" 2> /dev/null # Link Drupal docroot to Docker docroot
 mkdir "${projectdir}/www/tmp" 2> /dev/null # To be used by temporary files in Drupal
 mkdir "${projectdir}/drupal/config" 2> /dev/null # Config files for Drupal 8 (not accessible by the browser!)
