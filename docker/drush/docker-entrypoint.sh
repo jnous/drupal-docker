@@ -1,5 +1,5 @@
 #!/usr/bin/env bash
-# set umask for root to make the files created by drupal console be editable by all
-# and then call the drupal console
+# set umask for root to make the files created by Drush be editable by all
+# and then call Drush
 umask 000
-/drush/drush "${@}"
+/usr/local/bin/drush "${@}"

@@ -32,6 +32,8 @@ services:
   mysql:
     container_name: $MYSQL_NAME
     image: $MYSQL_IMAGE
+    ports:
+      - 3306:33060
     volumes:
       - ../.mysql:/var/lib/mysql
       - ../www/tmp:/var/tmp

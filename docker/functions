@@ -16,7 +16,7 @@ fi
 projectdir=$(dirname "$(pwd)")
 net="${PROJECT_NAME}_dev_net"
 
-appdir="${projectdir}/www"
+appdir="${projectdir}/drupal"
 consolevol="${projectdir}/.console:/root/.console"
 drushvol="${projectdir}/.drush:/root/.drush"
 node_version="my/node:latest"
@@ -44,6 +44,10 @@ function relpath ()
     root=$(dirname "${relativedir}")
     base="${basedir}"
     while [ "${root}" != "/" ] && [ "${root}" != "." ] && [ "${root}" != "${base}" ] ; do
+        echo ${root} >&2
+        echo ${tail} >&2
+        echo ${base} >&2
+        echo $(pwd) >&2
         tailnew=$(basename ${root})/${tail}
         tail=${tailnew}
         rootnew=$(dirname ${root})
@@ -52,7 +56,7 @@ function relpath ()
     if [ ${root} != "/" ] && [ "${root}" != "." ] ; then
         echo ${tail}
     else
-        echo docroot
+        echo web
     fi
 }
 
@@ -73,8 +77,8 @@ function drush()
         --interactive \
         --rm \
         --volume="${appdir}":/app \
-        --volume="${projectdir}/.drush:/root/.drush" \
-        --workdir="/app/$(relpath)" \
+        --volume=${drushvol} \
+        --workdir="/app/web" \
         --net="${net}" \
         \
         my/drush "${@}"
@@ -90,8 +94,8 @@ function drupal()
         --interactive \
         --rm \
         --volume="${appdir}":/app \
-        --volume="${projectdir}/.console:/root/.console" \
-        --workdir="/app/$(relpath)" \
+        --volume="${consolevol}" \
+        --workdir="/app/web" \
         --net="${net}" \
         \
         my/drupalconsole "${@}"
@@ -146,24 +150,3 @@ alias env=genv # Use Gnu 's `env` for this project
 
 # workaround for Mac phpstorm Docker Integration plugin's API URL: http://localhost:2376
 alias socat="socat TCP-LISTEN:2376,reuseaddr,fork UNIX-CONNECT:/var/run/docker.sock"
-
-# prepare the directories to set ownership and access rights and to avoid scripts complaining about missing folders
-old_umask=$(umask)
-umask 000
-mkdir "${projectdir}/.drush" 2> /dev/null
-mkdir "${projectdir}/.log" 2> /dev/null
-mkdir "${projectdir}/.mysql" 2> /dev/null
-mkdir "${projectdir}/.sendmail" 2> /dev/null
-mkdir "${projectdir}/www" 2> /dev/null
-## These should be created by Composer project template (or manually if importing an existing project)
-# mkdir "${projectdir}/drupal" 2> /dev/null # Drupal Composer project directory
-# mkdir "${projectdir}/drupal/web" 2> /dev/null # Drupal installation directory
-ln -s "${projectdir}/drupal/web" "${projectdir}/www/docroot" 2> /dev/null # Link Drupal docroot to Docker docroot
-mkdir "${projectdir}/www/tmp" 2> /dev/null # To be used by temporary files in Drupal
-mkdir "${projectdir}/drupal/config" 2> /dev/null # Config files for Drupal 8 (not accessible by the browser!)
-mkdir "${projectdir}/drupal/config/default" 2> /dev/null # similar to the sites structure
-mkdir "${projectdir}/drupal/config/default/sync" 2> /dev/null
-mkdir "${projectdir}/www/private" 2> /dev/null # private files go here (not accessible by the browser!)
-mkdir "${projectdir}/www/private/default" 2> /dev/null # similar to the sites structure
-mkdir "${projectdir}/www/private/default/files" 2> /dev/null
-umask "${old_umask}"

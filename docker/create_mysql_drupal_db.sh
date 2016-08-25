@@ -39,6 +39,6 @@ EOF
 
 chmod +x $TMPDIR/$INITFILE
 
-docker exec -i $CONTAINER "$REMOTEDIR/$INITFILE"
+docker exec -it $CONTAINER "$REMOTEDIR/$INITFILE"
 
 rm $TMPDIR/$INITFILE

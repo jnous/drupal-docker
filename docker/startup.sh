@@ -9,6 +9,7 @@ cat .environment.env
 
 # load functions and environment variables
 . functions
+. directory-setup.sh
 
 # start docker containers
 export COMPOSE_OPTIONS="--env-file=.environment.env"
