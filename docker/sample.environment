@@ -16,6 +16,7 @@ export PROJECT_NAME=ddd
 # @TODO: change the 3rd octet of IP-addresses
 subnet=172.16.1
 ### The rest can be as is ###
+### Secure password option at the end of this file. ###
 
 # service: apache2
 # the container name:
