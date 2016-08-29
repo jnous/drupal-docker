@@ -2,6 +2,9 @@
 
 This project creates Docker containers for Drupal development. Drupal project is created based on [Composer template for Drupal projects](https://github.com/drupal-composer/drupal-project), database is MariaDB 10, tools such as Drush, Drupal Console, Node.js ans Sass are available. Also support for PhpStorm Docker integration is included.
 
+It has been build primarily Drupal 8 in mind, so if installing Drupal 7 you might run into some issues, though they should not be impossible to solve. Using Composer to manage also Drupal 7 installation is strongly recommended, although a script utilising Drush is included. See [Using Composer in a Drupal project](https://www.drupal.org/node/2404989) for details.
+
+
 ## Quick installation
 
 On OS X, you will need the GNU coreutils package, available through Homebrew: `brew install coreutils socat` (socat is included for PhpStorm support).
@@ -14,7 +17,7 @@ Setup the containers:
 2. In `docker` directory copy `sample.environment` to `environment`, customize as necessary and add execute permissions: `chmod a+x environment`.
 3. Run `. directory-setup.sh`.
 4. Run `. composer-init.sh` to get Composer template for Drupal project, **or** copy your existing Drupal project under `drupal` with docroot in `drupal/web`.
-5. Run `. composer-drupal-install.sh` to install Drupal as specified in `composer.json`, set up some directories and create your `settings.php` ready for Drupal installation process.
+5. Run `. composer-drupal-install.sh` to install Drupal as specified in `composer.json`, to set up some directories and to create your `settings.php` ready for Drupal installation process.
 6. Run `. startup.sh`.
 7. If not running Docker for Mac, run `. addhost.sudo.sh`. (Docker for Mac does not support network interface mapping, so you'll use only localhost:<port> to connect.)
 8. Edit `drupal/composer.json` to suit your needs, for Drupal version and contrib modules. (Default Drupal version is 8.x-dev, suitable for core development.)
