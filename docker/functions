@@ -44,10 +44,6 @@ function relpath ()
     root=$(dirname "${relativedir}")
     base="${basedir}"
     while [ "${root}" != "/" ] && [ "${root}" != "." ] && [ "${root}" != "${base}" ] ; do
-        echo ${root} >&2
-        echo ${tail} >&2
-        echo ${base} >&2
-        echo $(pwd) >&2
         tailnew=$(basename ${root})/${tail}
         tail=${tailnew}
         rootnew=$(dirname ${root})
