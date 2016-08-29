@@ -18,7 +18,7 @@ docroot="$(projectdir)/drupal/web"
 # make some folders
 folders="sites/default/files modules/contrib themes/contrib libraries modules/custom modules/features themes/custom"
 for i in ${folders}; do
-  mkdir "${docroot}/${i}" 2> /dev/null
+  mkdir -p "${docroot}/${i}" 2> /dev/null
 done
 
 # prepare settings.php
