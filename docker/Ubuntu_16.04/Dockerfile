@@ -14,6 +14,7 @@ RUN apt-get update \
        php-curl \
        php-xdebug \
        php-sqlite3 \
+       php-xml \
        wget \
        curl \
     && rm -rf /var/lib/apt/lists/* \
@@ -42,4 +43,4 @@ ADD sendmail.sh /usr/sbin/sendmail
 
 CMD /usr/sbin/apache2ctl -D FOREGROUND
 
-WORKDIR /var/www/docroot
+WORKDIR /srv/drupal/web
