@@ -15,7 +15,7 @@ Setup the containers:
 3. Run `. composer-init.sh` to get Composer template for Drupal project, **or** copy your existing Drupal project under `drupal` with docroot in `drupal/web`.
 4. Run `. composer-drupal-install.sh` to install Drupal as specified in `composer.json`, set up some directories and create your `settings.php` ready for Drupal installation process.
 5. Run `. startup.sh`.
-6. If not running Docker for Mac, run `. addhost.sudo.sh`. (?)
+6. If not running Docker for Mac, run `. addhost.sudo.sh`. (Docker for Mac does not support network interface mapping, so you'll use only localhost:<port> to connect.)
 7. Edit `drupal/composer.json` to suit your needs, for Drupal version and contrib modules. (Default Drupal version is 8.x-dev, suitable for core development.)
 8. **Optional:** Do Drupal installation; if default settings are acceptable (like core development), run `. drush-si.sh`.
 
