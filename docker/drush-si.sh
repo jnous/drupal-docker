@@ -9,7 +9,7 @@ echo "**************************************************************************
 echo This will install a site with default values.
 echo "*************************************************************************************"
 
-cd "$(projectdir)/www/docroot"
+cd "$(projectdir)/drupal/web"
 drush si \
     --db-url="mysql://${MYSQL_DRUPAL_USER}:${MYSQL_DRUPAL_PASSWORD}@mysql:3306/${MYSQL_DRUPAL_DB}"  \
     --db-su=root \
