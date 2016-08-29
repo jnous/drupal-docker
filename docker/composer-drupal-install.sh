@@ -22,7 +22,16 @@ for i in ${folders}; do
 done
 
 # prepare settings.php
-cp -p "${docroot}"/sites/default/default.settings.php "${docroot}"/sites/default/settings.php
-echo "\$settings[\"file_private_path\"] = \"/var/www/private/default/files\";" >> "${docroot}"/sites/default/settings.php
+if [ ! -e "${docroot}/sites/default/settings.php" ]
+then
+  cp -p "${docroot}"/sites/default/default.settings.php "${docroot}"/sites/default/settings.php
+fi
+echo "\$settings[\"file_private_path\"] = \"/srv/drupal/private/default/files\";" >> "${docroot}"/sites/default/settings.php
 echo "\$settings[\"file_temporary_path\"] = \"/var/www/tmp\";" >> "${docroot}"/sites/default/settings.php
-echo "\$config_directories[\"sync\"] = \"/srv/drupal/default/sync\";" >> "${docroot}"/sites/default/settings.php
+echo "\$config_directories[\"sync\"] = \"/srv/drupal/config/default/sync\";" >> "${docroot}"/sites/default/settings.php
+
+# Setup settings.local.php. Should be .gitignored.
+if [ ! -e "${docroot}/sites/default/settings.local.php" ]
+then
+  cp -p "${docroot}"/sites/example.settings.local.php "${docroot}"/sites/default/settings.local.php
+fi

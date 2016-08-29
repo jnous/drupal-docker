@@ -5,7 +5,7 @@ umask 000
 # load basic functions and project environment
 . functions
 
-docroot="$(projectdir)/www/docroot"
+docroot="$(projectdir)/drupal/web"
 
 if [ ! $(find "${docroot}" -prune -empty) ]; then
     echo "*************************************************************************************"
@@ -25,9 +25,10 @@ echo "processing..."
 
 # download Drupal into a temporary location
 
-cd "$(projectdir)/www/tmp"
+cd "$(projectdir)/tmp"
 rm -R drupal-7* 2> /dev/null
 drush -y dl drupal-7
+cd -
 
 # rename the old location and try to remove it
 if [ -d "${docroot}" ]; then
@@ -37,7 +38,7 @@ if [ -d "${docroot}" ]; then
       echo "The old docroot could not be removed completely. Remove \"${docroot}.rm\" manually"
     fi
 fi
-mv drupal-7* ../docroot
+mv drupal-7* "${docroot}"
 
 cd "${docroot}"
 
@@ -52,3 +53,4 @@ cp sites/default/default.settings.php sites/default/settings.php
 echo "\$conf[\"file_private_path\"] = \"../private/default/files\";" >> sites/default/settings.php
 echo "\$conf[\"file_temporary_path\"] = \"../tmp\";" >> sites/default/settings.php
 
+cd -

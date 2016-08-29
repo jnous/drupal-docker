@@ -5,7 +5,7 @@
 
 CONTAINER=$MYSQL_NAME
 REMOTEDIR=/var/tmp
-TMPDIR=../www/tmp
+TMPDIR=../tmp
 INITFILE=adduserdb.sh
 mkdir $TMPDIR 2> /dev/null
 cat > $TMPDIR/$INITFILE << EOF
