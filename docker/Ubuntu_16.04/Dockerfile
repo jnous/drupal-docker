@@ -21,9 +21,11 @@ RUN apt-get update \
     && a2enmod php7.0 \
     && a2enmod rewrite
 
+RUN phpenmod xml
+
 # Set up debugger
 # Please provide your host (local machine IP):
-RUN echo "xdebug.remote_host=172.17.0.1" >> /etc/php/7.0/mods-available/xdebug.ini \
+RUN echo "xdebug.remote_host=172.16.1.1" >> /etc/php/7.0/mods-available/xdebug.ini \
     && echo "xdebug.remote_enable=1" >> /etc/php/7.0/mods-available/xdebug.ini \
     && phpenmod xdebug
 
