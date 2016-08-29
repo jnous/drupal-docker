@@ -28,7 +28,7 @@ then
 fi
 # Set file system paths and config directory
 echo "\$settings[\"file_private_path\"] = \"/srv/drupal/private/default/files\";" >> "${docroot}"/sites/default/settings.php
-echo "\$settings[\"file_temporary_path\"] = \"/var/www/tmp\";" >> "${docroot}"/sites/default/settings.php
+echo "\$settings[\"file_temporary_path\"] = \"/var/tmp\";" >> "${docroot}"/sites/default/settings.php
 echo "\$config_directories[\"sync\"] = \"/srv/drupal/config/default/sync\";" >> "${docroot}"/sites/default/settings.php
 
 # Setup settings.local.php. Should be .gitignored.
