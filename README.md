@@ -4,10 +4,12 @@ This project creates Docker containers for Drupal development. Drupal project is
 
 It has been build primarily Drupal 8 in mind, so if installing Drupal 7 you might run into some issues, though they should not be impossible to solve. Using Composer to manage also Drupal 7 installation is strongly recommended, although a script utilising Drush is included. See [Using Composer in a Drupal project](https://www.drupal.org/node/2404989) for details.
 
+On OS X, instead of Docker for Mac use `docker-machine` from [Docker Toolbox](https://www.docker.com/products/docker-toolbox) for better mount performance between the host and Docker until `osxfs` performance is fixed. `docker-machine` requires VirtualBox (or VMware Fusion).
+
 
 ## Quick installation
 
-On OS X, you will need the GNU coreutils package, available through Homebrew: `brew install coreutils socat` (socat is included for PhpStorm support).
+On OS X, you will need the GNU coreutils package, available through Homebrew: `brew install coreutils`. If using Docker for Mac, also `brew install socat` for PhpStorm support.
 
 First time setting up this project, run `. build-images.sh` to build the Docker images. After that, the images will be available for next projects.
 
